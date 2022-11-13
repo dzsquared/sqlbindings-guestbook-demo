@@ -2,7 +2,10 @@ module.exports = async function (context, req) {
     context.log(req.body);
 
     if (req.body) {
-        newRow.TextEntry = req.body.newEntry;
+        newRow = {
+            TextEntry: req.body.newEntry,
+            DisableView: false
+        };
         context.bindings.newEntry = newRow;
         context.res = {
             body: newRow,

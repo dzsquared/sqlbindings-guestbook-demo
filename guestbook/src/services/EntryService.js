@@ -1,7 +1,7 @@
 
 export async function addEntry ( entry ) {
     // TODO get api root url from app settings
-    const url = 'https://passguestbook.azurewebsites.net/api/entry';
+    const url = 'https://passguestbook.azurewebsites.net/api/Entry';
     const response = await fetch ( url , {
         method : 'POST' ,
         headers : {
