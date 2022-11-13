@@ -2,10 +2,10 @@ module.exports = async function (context, req) {
     context.log(req.body);
 
     if (req.body) {
-        newEntry = req.body;
-        context.bindings.newEntry = newEntry;
+        newRow.TextEntry = req.body.newEntry;
+        context.bindings.newEntry = newRow;
         context.res = {
-            body: newEntry,
+            body: newRow,
             mimetype: "application/json",
             status: 201
         };
