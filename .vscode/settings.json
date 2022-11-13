@@ -1,0 +1,10 @@
+{
+    "azureFunctions.templateFilter": "All",
+    "azureFunctions.deploySubpath": "apis/js-api",
+    "azureFunctions.postDeployTask": "npm install (functions)",
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectSubpath": "apis/js-api",
+    "azureFunctions.preDeployTask": "npm prune (functions)"
+}

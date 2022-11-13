@@ -1,0 +1,6 @@
+CREATE TABLE [app].[Entry]
+(
+  [Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  [DisableView] BIT NOT NULL DEFAULT(0),
+  [TextEntry] NVARCHAR(MAX) NOT NULL
+)
