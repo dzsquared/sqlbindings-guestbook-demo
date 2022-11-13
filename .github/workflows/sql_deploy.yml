@@ -1,6 +1,9 @@
 name: Deploy SQL schema
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
