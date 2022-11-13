@@ -2,9 +2,13 @@ module.exports = async function (context, req) {
     context.log(req.body);
 
     if (req.body) {
+        // create timestamp
+        var date = new Date();
+        // setup new entry
         newRow = {
             TextEntry: req.body.newEntry,
-            DisableView: false
+            DisableView: false,
+            DateCreated: date.toISOString()
         };
         context.bindings.newEntry = newRow;
         context.res = {
