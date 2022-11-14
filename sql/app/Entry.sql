@@ -5,4 +5,8 @@ CREATE TABLE [app].[Entry]
   [TextEntry] NVARCHAR(MAX) NOT NULL,
   [DateCreated] DATETIME NOT NULL DEFAULT(GETDATE()),
   [DateModerated] DATETIME NULL
-)
+);
+GO
+
+ALTER TABLE app.Entry
+ENABLE CHANGE_TRACKING;
