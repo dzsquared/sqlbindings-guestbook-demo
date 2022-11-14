@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Microsoft.Azure.WebJobs.Extensions.Sql;
 
 
@@ -20,9 +21,11 @@ namespace Azure.Samples
         public static void Run(
             [SqlTrigger("app.Entry", ConnectionStringSetting = "SqlConnectionString")] IReadOnlyList<SqlChange<Entry>> changes,
             [Sql("app.Entry", ConnectionStringSetting = "SqlConnectionString")] out Entry[] entryUpdates,
+            [Sql("app.Moderation", ConnectionStringSetting = "SqlConnectionString")] out Moderation[] moderationUpdates,
             ILogger log)
         {
             List<Entry> updates = new List<Entry>();
+            List<Moderation> moderation = new List<Moderation>();
             // content moderation setup
             string SubscriptionKey = Environment.GetEnvironmentVariable("ModeratorKey");
             string ContentEndpoint = Environment.GetEnvironmentVariable("ModeratorEndpoint");
@@ -36,16 +39,27 @@ namespace Azure.Samples
                 {
                     // send the new entry for moderation
                     string toModerate = change.Item.TextEntry;
+                    Entry toDisable = change.Item;
                     using (Stream stream = GenerateStreamFromString(toModerate)) {
-                        var contentScreen = clientText.TextModeration.ScreenText("text/plain", stream, "eng", false, false, null, false);
+                        Screen contentScreen = clientText.TextModeration.ScreenText("text/plain", stream, "eng", false, false, null, false);
                         if (contentScreen.Terms != null && contentScreen.Terms.Count > 0) {
                             // if there are profane terms, mark the entry as disabled
-                            Entry toDisable = change.Item;
                             toDisable.DisableView = true;
-                            updates.Add(toDisable);
                         }
+                        Moderation newModeration = new Moderation(change.Item.Id, contentScreen);
+                        moderation.Add(newModeration);
                     }
+                    toDisable.DateModerated = DateTime.Now;
+                    updates.Add(toDisable);
                 }
+            }
+            if (moderation.Count > 0)
+            {
+                moderationUpdates = moderation.ToArray();
+            }
+            else
+            {
+                moderationUpdates = null;
             }
             if (updates.Count > 0)
             {
