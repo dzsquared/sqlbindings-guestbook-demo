@@ -16,10 +16,13 @@ namespace Azure.Samples
         public Moderation(int Id, Screen contentScreen)
         {
             this.Id = Id;
-            this.Category1 = contentScreen.Classification.Category1.Score;
-            this.Category2 = contentScreen.Classification.Category2.Score;
-            this.Category3 = contentScreen.Classification.Category3.Score;
-            this.ReviewRecommended = contentScreen.Classification.ReviewRecommended;
+            if (contentScreen.Classification != null)
+            {
+                this.Category1 = contentScreen.Classification.Category1.Score;
+                this.Category2 = contentScreen.Classification.Category2.Score;
+                this.Category3 = contentScreen.Classification.Category3.Score;
+                this.ReviewRecommended = contentScreen.Classification.ReviewRecommended;
+            }
 
             if (contentScreen.Terms != null && contentScreen.Terms.Count > 0)
             {
