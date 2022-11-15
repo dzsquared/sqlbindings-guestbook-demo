@@ -6,8 +6,11 @@ export const Entries = ( { entries } ) => {
     }
     const EachEntry = ( entry, index) => {
         return (
-            <div key={index} className="row">
-                <p>{entry.TextEntry}</p>
+            <div>
+                <div key={index} className="row">
+                    <p>{entry.TextEntry}</p>
+                </div>
+                <hr></hr>
             </div>
         );
     };
@@ -16,7 +19,7 @@ export const Entries = ( { entries } ) => {
 
     return (
         <div className='container'>
-            <h4>Recent Entries</h4>
+            <h4 className='pass-green'>Recent Entries</h4>
             {entryList}
         </div>
     );

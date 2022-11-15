@@ -42,7 +42,8 @@ function App() {
                 <div className="row">
                     <AddEntry onChangeForm={onChangeForm} addEntry={entryCreate} />
                 </div>
-                <div>
+                <hr className='horizontal-border'></hr>
+                <div className='row'>
                     <Entries entries={entries} />
                 </div>
             </div>
