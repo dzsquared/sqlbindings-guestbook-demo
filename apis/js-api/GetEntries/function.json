@@ -14,7 +14,7 @@
       "name": "recentEntries",
       "type": "sql",
       "direction": "in",
-      "commandText": "SELECT TOP 10 [TextEntry] FROM app.Entry WHERE [DisableView]= 0 ORDER BY [EntryId] DESC",
+      "commandText": "SELECT TOP 10 [TextEntry] FROM app.Entry WHERE [DisableView]= 0 ORDER BY [Id] DESC",
       "commandType": "Text",
       "connectionStringSetting": "SQLConnectionString"
     },
