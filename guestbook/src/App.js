@@ -1,21 +1,32 @@
 import './App.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/Header';
 import { AddEntry } from './components/AddEntry';
-import { addEntry } from './services/EntryService';
+import { Entries } from './components/Entries';
+import { addEntry, getEntries } from './services/EntryService';
 
 function App() {
     
+    const [entries, setEntries] = useState([]);
     const [entry, setEntry] = useState({});
 
     const entryCreate = (e) => {
         addEntry(entry).then(res => {
             console.log(res);
-            // TODO reset the page and add success message
+            // reset the page and add success message
+            getEntries().then(res => {
+                setEntries(res);
+            });
         });
     }
+
+    useEffect(() => {
+        getEntries().then(res => {
+            setEntries(res);
+        });
+    });
 
     const onChangeForm = (e) => {
         if (e.target.id === 'newEntry') {
@@ -30,6 +41,9 @@ function App() {
             <div className="container mrgnbtm">
                 <div className="row">
                     <AddEntry onChangeForm={onChangeForm} addEntry={entryCreate} />
+                </div>
+                <div>
+                    <Entries entries={entries} />
                 </div>
             </div>
         </div>
