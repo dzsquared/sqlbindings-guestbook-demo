@@ -8,7 +8,8 @@ module.exports = async function (context, req) {
         newRow = {
             TextEntry: req.body.newEntry,
             DisableView: false,
-            DateCreated: date.toISOString()
+            DateCreated: date.toISOString(),
+            DateModerated: null
         };
         context.bindings.newEntry = newRow;
         context.res = {
