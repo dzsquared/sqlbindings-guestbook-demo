@@ -19,7 +19,7 @@ namespace Azure.Samples
     {
         [FunctionName("Moderator")]
         public static void Run(
-            [SqlTrigger("app.Entry", ConnectionStringSetting = "SqlConnectionString")] IReadOnlyList<SqlChange<Entry>> changes,
+            [SqlTrigger("[app].[Entry]", ConnectionStringSetting = "SqlConnectionString")] IReadOnlyList<SqlChange<Entry>> changes,
             [Sql("app.Entry", ConnectionStringSetting = "SqlConnectionString")] out Entry[] entryUpdates,
             [Sql("app.Moderation", ConnectionStringSetting = "SqlConnectionString")] out Moderation[] moderationUpdates,
             ILogger log)
