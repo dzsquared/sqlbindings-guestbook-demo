@@ -2,6 +2,9 @@ CREATE PROCEDURE [dbo].[ChangeTrackingHealthReport]
   @schema nvarchar(100),
   @table nvarchar(100)
 AS
+  -- content from mssqltips by Susantha Bathige 
+  -- https://www.mssqltips.com/sqlservertip/4035/sql-server-change-tracking-performance-troubleshooting/
+
   select sch.name
     , it.name as CT_Name
     , ps.row_count as CT_Rows
