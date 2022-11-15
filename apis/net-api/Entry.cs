@@ -8,6 +8,6 @@ namespace Azure.Samples
         public bool DisableView { get; set; }
         public string TextEntry { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime DateModerated { get; set; }
+        public DateTime? DateModerated { get; set; }
     }
 }
