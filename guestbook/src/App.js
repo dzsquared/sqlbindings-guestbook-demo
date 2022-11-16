@@ -13,13 +13,17 @@ function App() {
     const [entry, setEntry] = useState({});
 
     const entryCreate = (e) => {
-        addEntry(entry).then(res => {
-            console.log(res);
-            // reset the page and add success message
-            getEntries().then(res => {
-                setEntries(res);
+        // check that newEntry field is not empty
+        if (entry.newEntry) {
+            addEntry(entry).then(res => {
+                console.log(res);
+                // reset the page and add success message
+                getEntries().then(res => {
+                    setEntries(res);
+                });
+                document.getElementById("newEntry").value = "";
             });
-        });
+        }
     }
 
     useEffect(() => {
