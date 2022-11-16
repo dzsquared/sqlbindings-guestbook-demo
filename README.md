@@ -21,6 +21,8 @@ Learn more at [https://aka.ms/sqlbindings](https://aka.ms/sqlbindings).
 
 - Azure Functions can authenticate to Azure SQL Database with Azure AD Managed Identity
 - Configure SQL bindings with a connection string and T-SQL query, stored procedure name, or table name
+- SQL bindings are currently in preview for .NET, JavaScript, Python, PowerShell, and Java Azure Functions
+- SQL trigger is currently in preview for .NET Azure Functions
  
 ## Architecture
 
