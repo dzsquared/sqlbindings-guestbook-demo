@@ -5,5 +5,6 @@ CREATE TABLE [app].[Moderation] (
     [Category3]         DECIMAL (18, 17) NULL,
     [ReviewRecommended] BIT              NULL,
     [ProfaneTerms]      NVARCHAR (MAX)   NULL,
+    [BannedWords]       NVARCHAR(MAX)   NULL,
     CONSTRAINT [FK_Moderation_Entry] FOREIGN KEY ([Id]) REFERENCES [app].[Entry] ([Id])
 );
