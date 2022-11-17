@@ -54,7 +54,7 @@
 }
 
 .btn-success {
-    background-color: #0066cc !important;
+    background-color: #009999 !important;
 }
 
 .bg-primary {
@@ -92,4 +92,10 @@
 
 .primary-header {
     font-weight: 700;
+}
+
+.horizontal-border {
+  height: 8px;
+  background: linear-gradient(to right, #ed3331, #ebab2a, #00a361, #4b80c1);
+  opacity: 1;
 }

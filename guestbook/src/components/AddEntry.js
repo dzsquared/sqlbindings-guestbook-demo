@@ -5,10 +5,11 @@ export const AddEntry = ({ onChangeForm, addEntry }) => {
         <div className="container">
             <div className="row">
                 <div className="col-md-12 mrgnbtm">
+                    <h4 className='pass-blue'>Add Entry</h4>
                     <form>
                         <div className="row">
                             <div className="form-group col-md-6">
-                                <label htmlFor="newEntry">Guestbook Entry:</label>
+                                {/* <label htmlFor="newEntry">Guestbook Entry:</label> */}
                                 <textarea className="form-control" id="newEntry" name="newEntry" rows="3" onChange={(e) => onChangeForm(e)} maxLenth={3000}></textarea>
                             </div>
                         </div>

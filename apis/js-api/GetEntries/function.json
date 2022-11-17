@@ -5,15 +5,17 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "Entry",
       "methods": [
-        "post"
+        "get"
       ]
     },
     {
-      "name": "newEntry",
+      "name": "recentEntries",
       "type": "sql",
-      "direction": "out",
-      "commandText": "app.Entry",
+      "direction": "in",
+      "commandText": "SELECT TOP 10 [TextEntry] FROM app.Entry WHERE [DisableView]= 0 ORDER BY [Id] DESC",
+      "commandType": "Text",
       "connectionStringSetting": "SQLConnectionString"
     },
     {
